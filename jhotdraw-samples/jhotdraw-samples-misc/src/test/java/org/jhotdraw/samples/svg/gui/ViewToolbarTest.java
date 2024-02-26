@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import javax.swing.*;
 
+import java.awt.*;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -41,21 +42,29 @@ public class ViewToolbarTest {
 
     @Test
     public void testMiniPanelHasCorrectTextFieldCount() {
-        assertEquals(0, Arrays.stream(miniComponent.getComponents()).filter(component -> component instanceof JTextField).count());
+        Component[] components = miniComponent.getComponents();
+        long textFieldCount = Arrays.stream(components).filter(component -> component instanceof JTextField).count();
+        assertEquals(0, textFieldCount);
     }
 
     @Test
     public void testMiniPanelHasCorrectButtonCount() {
-        assertEquals(2, Arrays.stream(miniComponent.getComponents()).filter(component -> component instanceof AbstractButton).count());
+        Component[] components = miniComponent.getComponents();
+        long buttonCount = Arrays.stream(components).filter(component -> component instanceof AbstractButton).count();
+        assertEquals(2, buttonCount);
     }
 
     @Test
     public void testExpandedPanelHasCorrectTextFieldCount() {
-        assertEquals(2, Arrays.stream(expandedComponent.getComponents()).filter(component -> component instanceof JTextField).count());
+        Component[] components = expandedComponent.getComponents();
+        long textFieldCount = Arrays.stream(components).filter(component -> component instanceof JTextField).count();
+        assertEquals(2, textFieldCount);
     }
 
     @Test
     public void testExpandedPanelHasCorrectButtonCount() {
-        assertEquals(2, Arrays.stream(expandedComponent.getComponents()).filter(component -> component instanceof AbstractButton).count());
+        Component[] components = expandedComponent.getComponents();
+        long buttonCount = Arrays.stream(components).filter(component -> component instanceof AbstractButton).count();
+        assertEquals(2, buttonCount);
     }
 }
