@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import dk.sdu.mmmi.featuretracer.lib.FeatureEntryPoint;
 import org.jhotdraw.api.gui.EditableComponent;
 import org.jhotdraw.util.*;
 
@@ -55,7 +54,6 @@ public class DuplicateAction extends AbstractSelectionAction {
     /**
      * Creates a new instance which acts on the currently focused component.
      */
-    @FeatureEntryPoint(value="DuplicateAction")
     public DuplicateAction() {
         this(null);
     }
@@ -72,7 +70,6 @@ public class DuplicateAction extends AbstractSelectionAction {
         ResourceBundleUtil labels = ResourceBundleUtil.getBundle("org.jhotdraw.action.Labels");
         labels.configureAction(this, ID);
     }
-    @FeatureEntryPoint(value="DuplicateAction")
     @Override
     public void actionPerformed(ActionEvent evt) {
         JComponent c = target;
