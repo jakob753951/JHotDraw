@@ -80,7 +80,8 @@ public class ViewToolBar extends AbstractToolBar {
         AbstractButton zoomButton = getZoomButton(gridButton.getPreferredSize().height);
         GridBagConstraints zoomButtonConstraints = getZoomButtonConstraints();
 
-
+        
+        // JPanel
         JPanel panel = setupJPanel();
         panel.add(gridButton, gridButtonConstraints);
         panel.add(zoomButton, zoomButtonConstraints);
@@ -103,8 +104,9 @@ public class ViewToolBar extends AbstractToolBar {
         // Zoom button
         AbstractButton zoomButton = getZoomButton(scaleFactorField.getPreferredSize().height);
         GridBagConstraints zoomButtonConstraints = getZoomButtonConstraints();
-
-
+        
+        
+        // JPanel
         JPanel panel = setupJPanel();
         panel.add(gridSizeField, gridSizeFieldConstraints);
         panel.add(gridButton, gridButtonConstraints);
@@ -192,8 +194,6 @@ public class ViewToolBar extends AbstractToolBar {
         gridButtonConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridButtonConstraints.gridx = 1;
         gridButtonConstraints.gridy = 0;
-        gridButtonConstraints.fill = GridBagConstraints.NONE;
-        gridButtonConstraints.insets = new Insets(0, 0, 0, 0);
         return gridButtonConstraints;
     }
 
@@ -202,7 +202,6 @@ public class ViewToolBar extends AbstractToolBar {
         gridSizeFieldConstraints.anchor = GridBagConstraints.FIRST_LINE_START;
         gridSizeFieldConstraints.gridx = 0;
         gridSizeFieldConstraints.gridy = 0;
-        gridSizeFieldConstraints.insets = new Insets(0, 0, 0, 0);
         return gridSizeFieldConstraints;
     }
 
