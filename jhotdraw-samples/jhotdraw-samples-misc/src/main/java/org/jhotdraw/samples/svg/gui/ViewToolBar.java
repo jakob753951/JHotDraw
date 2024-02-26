@@ -133,17 +133,15 @@ public class ViewToolBar extends AbstractToolBar {
         gridSizeField.setHorizontalAlignment(JTextField.LEADING);
         final GridConstrainer constrainer = (GridConstrainer) view.getVisibleConstrainer();
         gridSizeField.addPropertyChangeListener(evt -> {
-            if ("value".equals(evt.getPropertyName())) {
-                if (evt.getNewValue() != null) {
-                    constrainer.setWidth((Double) evt.getNewValue());
-                    constrainer.setHeight((Double) evt.getNewValue());
-                    prefs = PreferencesUtil.userNodeForPackage(getClass());
-                    try {
-                        prefs.putDouble("view.gridSize", (Double) evt.getNewValue());
-                    } catch (IllegalStateException e) { //ignore
-                    }
-                    view.getComponent().repaint();
+            if ("value".equals(evt.getPropertyName()) && evt.getNewValue() != null) {
+                constrainer.setWidth((Double) evt.getNewValue());
+                constrainer.setHeight((Double) evt.getNewValue());
+                prefs = PreferencesUtil.userNodeForPackage(getClass());
+                try {
+                    prefs.putDouble("view.gridSize", (Double) evt.getNewValue());
+                } catch (IllegalStateException e) { //ignore
                 }
+                view.getComponent().repaint();
             }
         });
         gridSizeField.setValue(constrainer.getHeight());
@@ -160,10 +158,8 @@ public class ViewToolBar extends AbstractToolBar {
         scaleFactorField.setHorizontalAlignment(JTextField.LEADING);
         scaleFactorField.setValue(view.getScaleFactor());
         scaleFactorField.addPropertyChangeListener(evt -> {
-            if ("value".equals(evt.getPropertyName())) {
-                if (evt.getNewValue() != null) {
-                    view.setScaleFactor((Double) evt.getNewValue());
-                }
+            if ("value".equals(evt.getPropertyName()) && evt.getNewValue() != null) {
+                view.setScaleFactor((Double) evt.getNewValue());
             }
         });
         JavaNumberFormatter formatter = new JavaNumberFormatter(0.01d, 50d, 100d, false, "%");
@@ -171,10 +167,8 @@ public class ViewToolBar extends AbstractToolBar {
         formatter.setMaximumFractionDigits(1);
         scaleFactorField.setFormatterFactory(new DefaultFormatterFactory(formatter));
         view.addPropertyChangeListener(evt -> {
-            if (Objects.equals(evt.getPropertyName(), DrawingView.SCALE_FACTOR_PROPERTY)) {
-                if (evt.getNewValue() != null) {
-                    scaleFactorField.setValue(evt.getNewValue());
-                }
+            if (Objects.equals(evt.getPropertyName(), DrawingView.SCALE_FACTOR_PROPERTY) && evt.getNewValue() != null) {
+                scaleFactorField.setValue(evt.getNewValue());
             }
         });
         return scaleFactorField;
